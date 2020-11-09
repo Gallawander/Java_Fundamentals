@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class TextRet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc = new Scanner (System.in, "UTF-8");
+		
+		//User input
+		System.out.println("Zadaj vetu, ktor˙ chceö öifrovaù (bez diakritiky!)");
+		String vstup = sc.nextLine().trim();
+		
+		//Cipher initialization
+		String sprava = "";
+		System.out.println("Zadaj kæ˙Ë (ËÌslo od 1 do 9), podæa ktorÈho sa bude öifrovaù.");
+		int posun = Integer.parseInt(sc.nextLine());
+		
+		while ((posun < 1) || (posun > 9)) {
+			System.out.println("Zadali ste nevhodn˝ kæ˙Ë");
+			System.out.println("Zadajte kæ˙Ë znova");
+			posun = Integer.parseInt(sc.nextLine());
+		}
+		
+		if ((posun >= 1) && (posun <= 9)) {
+			//Ciphering
+			for (char vystup : vstup.toCharArray()) {
+				int i = (int) vystup;
+				i += posun;
+				
+				// Overflow control
+				if (i > (int)'z') {
+				    i -= 26;
+				}
+				char znak = (char) i;
+				sprava += znak;
+			}
+		
+		//Output
+		System.out.println("Vaöa öifrovan· spr·va je: " + sprava);
+		}
+
+	}
+
+}
